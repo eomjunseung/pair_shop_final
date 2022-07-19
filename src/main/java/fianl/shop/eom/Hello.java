@@ -13,4 +13,5 @@ public class Hello {
     private Long id;
 
     private String name;
+    private String test;
 }
