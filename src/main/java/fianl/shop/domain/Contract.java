@@ -1,5 +1,6 @@
 package fianl.shop.domain;
 
+import fianl.shop.eom.domain.Member;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
