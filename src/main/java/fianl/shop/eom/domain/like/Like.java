@@ -1,9 +1,9 @@
-package fianl.shop.eom.domain;
+package fianl.shop.eom.domain.like;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import fianl.shop.domain.item.Item;
-import fianl.shop.eom.domain.Member;
+import fianl.shop.eom.domain.member.Member;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

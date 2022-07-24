@@ -1,4 +1,4 @@
-package fianl.shop.eom.respository;
+package fianl.shop.eom.domain.member;
 
 public class MemberJpaRespositoy {
     ///
