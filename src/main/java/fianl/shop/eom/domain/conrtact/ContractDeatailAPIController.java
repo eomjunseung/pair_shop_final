@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class ContractDeatailAPIController {
-    private final ContractService contractService;
+    private final ContractService contractService; //아마 여기서 안쓸듯합니다. (to종훈님)
     private final ContractJpaRespository contractJpaRespository;
 
     @GetMapping("/d/v1/contracts")
