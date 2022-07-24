@@ -1,4 +1,4 @@
-package fianl.shop.eom.domain.login;
+package fianl.shop.eom.domain.member.login;
 
 import fianl.shop.eom.domain.member.Member;
 import fianl.shop.eom.domain.member.MemberRepository;

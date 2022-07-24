@@ -1,13 +1,11 @@
-package fianl.shop.eom.domain.api;
+package fianl.shop.eom.api;
 
 import fianl.shop.Result;
 import fianl.shop.SessionConst;
-import fianl.shop.eom.domain.login.LoginService;
-import fianl.shop.eom.domain.member.Member;
 import fianl.shop.eom.domain.member.MemberService;
-import fianl.shop.exception.NotEnoughStockException;
+import fianl.shop.eom.domain.member.login.LoginService;
+import fianl.shop.eom.domain.member.Member;
 import lombok.RequiredArgsConstructor;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +35,8 @@ public class LoginApiController {
 
         //세션에 로그인 회원 정보 보관
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
+
+
         return new Result<>("로그인성공");
     }
 

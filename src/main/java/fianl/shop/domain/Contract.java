@@ -1,5 +1,6 @@
 package fianl.shop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import fianl.shop.eom.domain.member.Member;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -15,7 +16,6 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED) //기본 생성자를 만듬 --> 생성을 막는다
 public class Contract {
 
     @Id @GeneratedValue
@@ -39,5 +39,23 @@ public class Contract {
     @Enumerated(EnumType.STRING)
     private ContractStatus status; //주문상태 [ORDER, CANCEL]
 
+
+    public static Contract createContract(Member member, Installation installation, ContractItem contractItem) {
+        Contract contract = new Contract();
+        contract.setInstallation(installation);
+        contract.getContractItems().add(contractItem);
+//        contract.setContractDate();
+        return contract;
+    }
+
+
+    public String cancel() {
+
+        if(status==ContractStatus.Ready){
+            status = ContractStatus.CANCEL;
+            return "1";
+        }
+        return "0";
+    }
 
 }

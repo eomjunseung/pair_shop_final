@@ -27,6 +27,15 @@ public class ContractItem {
     private Contract contract;
 
     private int price; //1개 가격, 할인없으면 item의 가격과 완전 동일(수량고려X)
-    private int count;
 
+    public static ContractItem createContractItem(Contract contract, Item item, int price) {
+        ContractItem contractItem = new ContractItem();
+        contractItem.setItem(item);
+        contractItem.setPrice(price);
+
+        contract.getContractItems().add(contractItem);
+        contractItem.setContract(contract);
+
+        return contractItem;
+    }
 }

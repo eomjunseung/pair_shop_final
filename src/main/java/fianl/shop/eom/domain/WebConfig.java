@@ -2,15 +2,9 @@ package fianl.shop.eom.domain;
 
 
 
-import fianl.shop.eom.domain.login.LoginCheckInterceptor;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import javax.servlet.Filter;
-import java.util.List;
 
 
 @Configuration
