@@ -19,7 +19,7 @@ public class ContractApiController {
     private final ContractJpaRespository contractJpaRespository;
 
     //주문 생성
-    @PostMapping("/order")
+    @PostMapping("/contracts")
     public Result order(
                         @SessionAttribute(name = SessionConst.LOGIN_MEMBER) Member loginMember,
                         @RequestBody List<ItemDto> items) {
@@ -30,8 +30,8 @@ public class ContractApiController {
     //모든 주문 조회
     //지금은, 모두가 조회 가능 하나, 추후 MASTER만 조회 가능,
     //해당 프로젝트에서 적용 시키지 않을 예정.
-    @GetMapping(value = "/s/v1/orders")
-    public List<Contract> allOrderListV1() {
+    @GetMapping(value = "/s/v1/contracts")
+    public List<Contract> sContractAllV1() {
 
         List<Contract> all = contractJpaRespository.findAll();
 
@@ -49,8 +49,8 @@ public class ContractApiController {
         return all;
     }
 
-    @GetMapping(value = "/s/v2/orders")
-    public List<SimpleContractDTO> allOrderListV2() {
+    @GetMapping(value = "/s/v2/contracts")
+    public List<SimpleContractDTO> sContractAllV2() {
 
         List<Contract> all = contractJpaRespository.findAll();
         List<SimpleContractDTO> result = all.stream()
@@ -59,8 +59,8 @@ public class ContractApiController {
         return result;
     }
 
-    @GetMapping(value = "/s/v3/orders")
-    public List<SimpleContractDTO> allOrderListV3() {
+    @GetMapping(value = "/s/v3/contracts")
+    public List<SimpleContractDTO> sContractAllV3() {
 
         List<Contract> all = contractJpaRespository.findAllWithMemberInstallation();
         List<SimpleContractDTO> result = all.stream()
@@ -68,24 +68,24 @@ public class ContractApiController {
                 .collect(Collectors.toList());
         return result;
     }
-    @GetMapping(value = "/s/v4/orders")
-    public List<SimpleContractDTO> allOrderListV4() {
+    @GetMapping(value = "/s/v4/contracts")
+    public List<SimpleContractDTO> sContractAllV4() {
         return contractJpaRespository.findAllWithMemberInstallationDirectDTO();
     }
 
 
 
     //회원별 주문 조회
-    @GetMapping(value = "/members/orders")
+    @GetMapping(value = "/members/contracts")
     public Result orderList(@SessionAttribute(name = SessionConst.LOGIN_MEMBER) Member loginMember) {
         List<Contract> contracts = contractService.findMemberOrderList(loginMember);
         return new Result<>(contracts.size(), contracts, "내 주문 조회");
     }
 
     //주문 취소
-    @PostMapping(value = "/orders/{orderId}/cancel")
-    public Result cancelOrder(@PathVariable("orderId") Long orderId) {
-        return contractService.cancelOrder(orderId);
+    @PostMapping(value = "/contracts/{contractId}/cancel")
+    public Result cancelOrder(@PathVariable("contractId") Long orderId) {
+        return contractService.cancelContract(orderId);
     }
 
 }

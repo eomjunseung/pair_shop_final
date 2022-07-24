@@ -53,7 +53,7 @@ public class ContractService {
         return contract.getId();
     }
     /** 주문 취소 */
-    public Result cancelOrder(Long contractId) {
+    public Result cancelContract(Long contractId) {
 
         //주문 엔티티 조회
         Contract contract = contractRepository.findById(contractId).get(); //영컨에 슉
