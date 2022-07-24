@@ -39,12 +39,23 @@ public class Contract {
     @Enumerated(EnumType.STRING)
     private ContractStatus status; //주문상태 [ORDER, CANCEL]
 
+    public void setMember(Member member){
+        this.member=member;
+        member.getContracts().add(this);
+    }
 
-    public static Contract createContract(Member member, Installation installation, ContractItem contractItem) {
+    public static Contract createContract(Member member, Installation installation) {
+        //계약 생성 
         Contract contract = new Contract();
+        
+        //계약 주소 설정 쌍방셋팅
         contract.setInstallation(installation);
-        contract.getContractItems().add(contractItem);
-//        contract.setContractDate();
+        installation.setContract(contract);
+        
+        // 멤버  - 계약 쌍방 셋팅 
+        contract.setMember(member);
+        
+        contract.setStatus(ContractStatus.Ready);
         return contract;
     }
 

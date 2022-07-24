@@ -20,6 +20,4 @@ public abstract class Item {
     //공통속성
     private String name;
     private int price;
-
-
 }

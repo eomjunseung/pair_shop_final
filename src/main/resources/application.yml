@@ -19,9 +19,9 @@ spring:
       suffix: .html
 
 
-#  jackson:
-#    serialization:
-#      fail-on-empty-beans: false
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
 # ??? ???? ??? ??? ??...
 #  @Bean
 #  Hibernate5Module hibernate5Module() {

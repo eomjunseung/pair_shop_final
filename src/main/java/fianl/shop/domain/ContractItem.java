@@ -28,13 +28,17 @@ public class ContractItem {
 
     private int price; //1개 가격, 할인없으면 item의 가격과 완전 동일(수량고려X)
 
-    public static ContractItem createContractItem(Contract contract, Item item, int price) {
-        ContractItem contractItem = new ContractItem();
-        contractItem.setItem(item);
-        contractItem.setPrice(price);
 
-        contract.getContractItems().add(contractItem);
-        contractItem.setContract(contract);
+    public static ContractItem createContractItem(Item item, int price) {
+
+        //CONTRACT_ITEM  생성
+        ContractItem contractItem = new ContractItem();
+
+        //CONTRACT_ITEM - ITEM  연결 (단방향)
+        contractItem.setItem(item);
+
+        //가격 셋팅
+        contractItem.setPrice(price);
 
         return contractItem;
     }

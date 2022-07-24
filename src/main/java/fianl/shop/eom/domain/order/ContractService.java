@@ -29,26 +29,24 @@ public class ContractService {
         //멤버 갖고옴
         Member member = memberRepository.findById(loginMember.getId()).get(); //영컨등록
 
-        Contract contract = new Contract();
-        contract.setStatus(ContractStatus.Ready);
-
-        contract.setMember(member);
-        member.getContracts().add(contract);
-
         //설치 주소
         Installation installation = new Installation();
         installation.setAddress(member.getAddress());
         installation.setStatus(InstallationStatus.READY);
 
-        contract.setInstallation(installation);
-        installation.setContract(contract);
+        //계약 생성
+        Contract contract = Contract.createContract(member, installation);
 
         //아이템 갖고옴
         for (ItemDto item : items) {
-            Item newItem = itemRepository.findById(item.getId()).get(); //영컨등록
+            Item findItem = itemRepository.findById(item.getId()).get(); //영컨등록
 
             //주문상품 생성
-            ContractItem contractItem = ContractItem.createContractItem(contract,newItem, item.getPrice());
+            ContractItem contractItem = ContractItem.createContractItem(findItem, item.getPrice());
+
+            //CONTRACT - CONTRACT_ITEM 연결
+            contract.getContractItems().add(contractItem);
+            contractItem.setContract(contract);
         }
 
         contractRepository.save(contract);
