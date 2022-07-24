@@ -1,15 +1,16 @@
-package fianl.shop.eom.domain.order;
+package fianl.shop.eom.domain.conrtact;
 
 import fianl.shop.Result;
 import fianl.shop.SessionConst;
 import fianl.shop.domain.Contract;
-import fianl.shop.domain.ContractItem;
 import fianl.shop.eom.domain.member.Member;
+import fianl.shop.dto.ItemDto;
+import fianl.shop.dto.SimpleContractDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,22 +30,17 @@ public class ContractApiController {
     //모든 주문 조회
     //지금은, 모두가 조회 가능 하나, 추후 MASTER만 조회 가능,
     //해당 프로젝트에서 적용 시키지 않을 예정.
-    @GetMapping(value = "/orders")
-    public List<Contract> allOrderList() {
+    @GetMapping(value = "/s/v1/orders")
+    public List<Contract> allOrderListV1() {
 
         List<Contract> all = contractJpaRespository.findAll();
 
         for (Contract contract : all) {
-
             contract.getMember().getName(); //Lazy 강제 초기화 --> .getMember() 까지 프록시, getName();에서 쿼리
-
             contract.getInstallation().getAddress(); //Lazy 강제 초기화 --> 이하 동일 ( 이런게 강제 초기화~)
-
-            List<ContractItem> contractItems = contract.getContractItems();//주문에서 --> orderItem(디폴트 LAZY여서 직접 초기화 필요)
-
+//            List<ContractItem> contractItems = contract.getContractItems();//주문에서 --> orderItem(디폴트 LAZY여서 직접 초기화 필요)
             //OrdetItem에 Item이 LAZY임 --> 직접 초기화 필요
-            contractItems.stream().forEach(a -> a.getItem().getName()); //getItem()이 아니라, getName()에서 초기화됨 ㅎㅎ
-
+//            contractItems.stream().forEach(a -> a.getItem().getName()); //getItem()이 아니라, getName()에서 초기화됨 ㅎㅎ
         }
 
 
@@ -52,6 +48,32 @@ public class ContractApiController {
 
         return all;
     }
+
+    @GetMapping(value = "/s/v2/orders")
+    public List<SimpleContractDTO> allOrderListV2() {
+
+        List<Contract> all = contractJpaRespository.findAll();
+        List<SimpleContractDTO> result = all.stream()
+                .map(SimpleContractDTO::new)
+                .collect(Collectors.toList());
+        return result;
+    }
+
+    @GetMapping(value = "/s/v3/orders")
+    public List<SimpleContractDTO> allOrderListV3() {
+
+        List<Contract> all = contractJpaRespository.findAllWithMemberInstallation();
+        List<SimpleContractDTO> result = all.stream()
+                .map(SimpleContractDTO::new)
+                .collect(Collectors.toList());
+        return result;
+    }
+    @GetMapping(value = "/s/v4/orders")
+    public List<SimpleContractDTO> allOrderListV4() {
+        return contractJpaRespository.findAllWithMemberInstallationDirectDTO();
+    }
+
+
 
     //회원별 주문 조회
     @GetMapping(value = "/members/orders")
@@ -62,9 +84,8 @@ public class ContractApiController {
 
     //주문 취소
     @PostMapping(value = "/orders/{orderId}/cancel")
-    public String cancelOrder(@PathVariable("orderId") Long orderId) {
-        contractService.cancelOrder(orderId);
-        return "redirect:/orders";
+    public Result cancelOrder(@PathVariable("orderId") Long orderId) {
+        return contractService.cancelOrder(orderId);
     }
 
 }

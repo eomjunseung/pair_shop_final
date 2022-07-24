@@ -1,6 +1,5 @@
-package fianl.shop.eom.domain.order;
+package fianl.shop.dto;
 
-import jdk.jfr.DataAmount;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -3,7 +3,7 @@ package fianl.shop;
 
 import fianl.shop.domain.Address;
 import fianl.shop.domain.item.IPTv;
-import fianl.shop.eom.domain.order.ItemRepository;
+import fianl.shop.eom.domain.conrtact.ItemRepository;
 import fianl.shop.eom.domain.member.Member;
 import fianl.shop.eom.domain.member.MemberRepository;
 import lombok.RequiredArgsConstructor;

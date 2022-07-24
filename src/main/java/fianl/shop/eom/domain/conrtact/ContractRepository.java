@@ -1,4 +1,4 @@
-package fianl.shop.eom.domain.order;
+package fianl.shop.eom.domain.conrtact;
 
 import fianl.shop.domain.Contract;
 import fianl.shop.eom.domain.member.Member;

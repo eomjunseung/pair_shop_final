@@ -1,15 +1,14 @@
-package fianl.shop.eom.domain.order;
+package fianl.shop.eom.domain.conrtact;
 
 
 import fianl.shop.Result;
-import fianl.shop.SessionConst;
 import fianl.shop.domain.*;
 import fianl.shop.domain.item.Item;
 import fianl.shop.eom.domain.member.Member;
 import fianl.shop.eom.domain.member.MemberRepository;
+import fianl.shop.dto.ItemDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.transaction.Transactional;
 import java.util.List;

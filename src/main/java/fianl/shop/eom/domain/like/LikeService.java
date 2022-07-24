@@ -3,7 +3,7 @@ package fianl.shop.eom.domain.like;
 import fianl.shop.domain.item.Item;
 import fianl.shop.eom.domain.member.Member;
 import fianl.shop.eom.domain.member.MemberRepository;
-import fianl.shop.eom.domain.order.ItemRepository;
+import fianl.shop.eom.domain.conrtact.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
