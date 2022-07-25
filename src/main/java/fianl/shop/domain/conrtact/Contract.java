@@ -1,10 +1,8 @@
-package fianl.shop.domain;
+package fianl.shop.domain.conrtact;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import fianl.shop.eom.domain.member.Member;
-import lombok.AccessLevel;
+import fianl.shop.domain.Installation;
+import fianl.shop.domain.member.Member;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;

@@ -1,10 +1,10 @@
-package fianl.shop.eom.api;
+package fianl.shop.api;
 
 import fianl.shop.Result;
 import fianl.shop.SessionConst;
-import fianl.shop.eom.domain.member.MemberService;
-import fianl.shop.eom.domain.member.login.LoginService;
-import fianl.shop.eom.domain.member.Member;
+import fianl.shop.domain.member.MemberService;
+import fianl.shop.domain.member.login.LoginService;
+import fianl.shop.domain.member.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
-public class LoginApiController {
+public class LoginAPIController {
 
     private final MemberService memberService;
     private final LoginService loginService;

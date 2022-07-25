@@ -1,7 +1,5 @@
-package fianl.shop.eom.domain.conrtact;
+package fianl.shop.domain.conrtact;
 
-import fianl.shop.domain.Contract;
-import fianl.shop.dto.ContractDTO;
 import fianl.shop.dto.ContractDTOV5;
 import fianl.shop.dto.ContractItemDtoV5;
 import fianl.shop.dto.SimpleContractDTO;

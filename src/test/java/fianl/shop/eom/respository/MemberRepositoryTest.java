@@ -1,8 +1,8 @@
 package fianl.shop.eom.respository;
 
-import fianl.shop.eom.domain.member.Member;
-import fianl.shop.eom.domain.member.MemberJpaRespositoy;
-import fianl.shop.eom.domain.member.MemberRepository;
+import fianl.shop.domain.member.Member;
+import fianl.shop.domain.member.MemberJpaRespositoy;
+import fianl.shop.domain.member.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

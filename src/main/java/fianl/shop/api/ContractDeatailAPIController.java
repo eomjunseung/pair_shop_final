@@ -1,11 +1,11 @@
-package fianl.shop.eom.api;
+package fianl.shop.api;
 
-import fianl.shop.domain.Contract;
-import fianl.shop.domain.ContractItem;
+import fianl.shop.domain.conrtact.Contract;
+import fianl.shop.domain.conrtact.ContractItem;
 import fianl.shop.dto.ContractDTO;
 import fianl.shop.dto.ContractDTOV5;
-import fianl.shop.eom.domain.conrtact.ContractJpaRespository;
-import fianl.shop.eom.domain.conrtact.ContractService;
+import fianl.shop.domain.conrtact.ContractJpaRespository;
+import fianl.shop.domain.conrtact.ContractService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @RestController
 @RequiredArgsConstructor

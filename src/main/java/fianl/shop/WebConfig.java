@@ -1,4 +1,4 @@
-package fianl.shop.eom.domain;
+package fianl.shop;
 
 
 

@@ -1,4 +1,4 @@
-package fianl.shop.eom.domain.member;
+package fianl.shop.domain.member;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
-package fianl.shop.eom.domain.like;
+package fianl.shop.domain.like;
 
 import fianl.shop.Result;
 import fianl.shop.SessionConst;
-import fianl.shop.eom.domain.member.Member;
+import fianl.shop.domain.member.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

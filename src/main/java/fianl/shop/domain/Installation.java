@@ -1,6 +1,7 @@
 package fianl.shop.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import fianl.shop.domain.conrtact.Contract;
 import lombok.Getter;
 import lombok.Setter;
 

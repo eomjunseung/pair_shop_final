@@ -1,15 +1,12 @@
 package fianl.shop.dto;
 
 import fianl.shop.domain.Address;
-import fianl.shop.domain.Contract;
-import fianl.shop.domain.ContractItem;
-import fianl.shop.domain.ContractStatus;
+import fianl.shop.domain.conrtact.Contract;
+import fianl.shop.domain.conrtact.ContractStatus;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Data
 public class ContractDTOV5 {

@@ -1,4 +1,4 @@
-package fianl.shop.eom.domain.conrtact;
+package fianl.shop.domain.item;
 
 
 import lombok.RequiredArgsConstructor;

@@ -1,9 +1,9 @@
-package fianl.shop.eom.api;
+package fianl.shop.api;
 
 
 import fianl.shop.Result;
-import fianl.shop.eom.domain.member.Member;
-import fianl.shop.eom.domain.member.MemberService;
+import fianl.shop.domain.member.Member;
+import fianl.shop.domain.member.MemberService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-public class MemberApiController {
+public class MemberAPIController {
 
     private final MemberService memberService;
 

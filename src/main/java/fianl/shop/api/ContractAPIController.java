@@ -1,11 +1,11 @@
-package fianl.shop.eom.api;
+package fianl.shop.api;
 
 import fianl.shop.Result;
 import fianl.shop.SessionConst;
-import fianl.shop.domain.Contract;
-import fianl.shop.eom.domain.conrtact.ContractJpaRespository;
-import fianl.shop.eom.domain.conrtact.ContractService;
-import fianl.shop.eom.domain.member.Member;
+import fianl.shop.domain.conrtact.Contract;
+import fianl.shop.domain.conrtact.ContractJpaRespository;
+import fianl.shop.domain.conrtact.ContractService;
+import fianl.shop.domain.member.Member;
 import fianl.shop.dto.ItemDto;
 import fianl.shop.dto.SimpleContractDTO;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
-public class ContractApiController {
+public class ContractAPIController {
     private final ContractService contractService;
     private final ContractJpaRespository contractJpaRespository;
 

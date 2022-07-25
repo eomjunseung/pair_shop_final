@@ -1,7 +1,7 @@
 package fianl.shop.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import fianl.shop.domain.ContractItem;
+import fianl.shop.domain.conrtact.ContractItem;
 import lombok.Data;
 
 @Data

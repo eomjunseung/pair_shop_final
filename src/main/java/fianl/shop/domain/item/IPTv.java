@@ -12,5 +12,4 @@ import javax.persistence.Entity;
 @Setter
 public class IPTv extends Item{
     private String ipTvGrade;
-    private String etc;
 }

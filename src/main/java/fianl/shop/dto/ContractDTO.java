@@ -1,9 +1,9 @@
 package fianl.shop.dto;
 
 import fianl.shop.domain.Address;
-import fianl.shop.domain.Contract;
-import fianl.shop.domain.ContractItem;
-import fianl.shop.domain.ContractStatus;
+import fianl.shop.domain.conrtact.Contract;
+import fianl.shop.domain.conrtact.ContractItem;
+import fianl.shop.domain.conrtact.ContractStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;

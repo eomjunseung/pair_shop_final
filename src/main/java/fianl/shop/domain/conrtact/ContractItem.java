@@ -1,4 +1,4 @@
-package fianl.shop.domain;
+package fianl.shop.domain.conrtact;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

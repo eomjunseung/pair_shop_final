@@ -1,4 +1,4 @@
-package fianl.shop.eom.api;
+package fianl.shop.api;
 
 import lombok.Data;
 

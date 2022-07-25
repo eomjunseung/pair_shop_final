@@ -1,7 +1,7 @@
-package fianl.shop.eom.domain.member.login;
+package fianl.shop.domain.member.login;
 
-import fianl.shop.eom.domain.member.Member;
-import fianl.shop.eom.domain.member.MemberRepository;
+import fianl.shop.domain.member.Member;
+import fianl.shop.domain.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

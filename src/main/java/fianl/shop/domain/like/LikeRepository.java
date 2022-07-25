@@ -1,8 +1,7 @@
-package fianl.shop.eom.domain.like;
+package fianl.shop.domain.like;
 
 import fianl.shop.domain.item.Item;
-import fianl.shop.eom.domain.like.Like;
-import fianl.shop.eom.domain.member.Member;
+import fianl.shop.domain.member.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

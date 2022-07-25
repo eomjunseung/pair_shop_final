@@ -1,11 +1,9 @@
-package fianl.shop.eom.domain.member;
+package fianl.shop.domain.member;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import fianl.shop.domain.Address;
-import fianl.shop.domain.Contract;
+import fianl.shop.domain.conrtact.Contract;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

@@ -1,11 +1,12 @@
-package fianl.shop.eom.domain.conrtact;
+package fianl.shop.domain.conrtact;
 
 
 import fianl.shop.Result;
 import fianl.shop.domain.*;
 import fianl.shop.domain.item.Item;
-import fianl.shop.eom.domain.member.Member;
-import fianl.shop.eom.domain.member.MemberRepository;
+import fianl.shop.domain.item.ItemRepository;
+import fianl.shop.domain.member.Member;
+import fianl.shop.domain.member.MemberRepository;
 import fianl.shop.dto.ItemDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -3,9 +3,11 @@ package fianl.shop;
 
 import fianl.shop.domain.Address;
 import fianl.shop.domain.item.IPTv;
-import fianl.shop.eom.domain.conrtact.ItemRepository;
-import fianl.shop.eom.domain.member.Member;
-import fianl.shop.eom.domain.member.MemberRepository;
+import fianl.shop.domain.item.Internet;
+import fianl.shop.domain.item.IoT;
+import fianl.shop.domain.item.ItemRepository;
+import fianl.shop.domain.member.Member;
+import fianl.shop.domain.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -35,6 +37,14 @@ public class TestDataInit {
             ipTv.setName("iptvname"+i);
             ipTv.setIpTvGrade("VIP");
             itemRepository.save(ipTv);
+            IoT ioT = new IoT();
+            ioT.setName("iotname"+i);
+            ioT.setIotCategory("C"+i);
+            itemRepository.save(ioT);
+            Internet internet = new Internet();
+            internet.setName("internet_"+i);
+            internet.setInternetType("type"+i);
+            itemRepository.save(internet);
         }
     }
 
