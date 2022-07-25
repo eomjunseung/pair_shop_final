@@ -1,12 +1,17 @@
-package fianl.shop.eom.domain.conrtact;
+package fianl.shop.eom.api;
 
 import fianl.shop.domain.Contract;
 import fianl.shop.domain.ContractItem;
+import fianl.shop.dto.ContractDTO;
+import fianl.shop.eom.domain.conrtact.ContractJpaRespository;
+import fianl.shop.eom.domain.conrtact.ContractService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,4 +30,12 @@ public class ContractDeatailAPIController {
         }
         return all;
     }
+
+    @GetMapping("/d/v2/contracts")
+    public List<ContractDTO> dContractAllV2() {
+        List<Contract> all = contractJpaRespository.findAll();
+        return all.stream().map(c -> new ContractDTO(c)).collect(Collectors.toList());
+    }
+
+
 }
