@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 public class ContractAPIController {
+
     private final ContractService contractService;
     private final ContractJpaRespository contractJpaRespository;
 
@@ -25,8 +26,10 @@ public class ContractAPIController {
     public Result order(
                         @SessionAttribute(name = SessionConst.LOGIN_MEMBER) Member loginMember,
                         @RequestBody List<ItemDto> items) {
+
         contractService.makeContract(loginMember, items);
         return new Result(items.size(),items,"주문완료");
+
     }
 
     //모든 주문 조회
