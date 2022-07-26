@@ -1,5 +1,6 @@
 package fianl.shop.api;
 
+import fianl.shop.Result;
 import fianl.shop.domain.conrtact.Contract;
 import fianl.shop.domain.conrtact.ContractItem;
 import fianl.shop.dto.ContractDTO;
@@ -21,7 +22,7 @@ public class ContractDeatailAPIController {
     private final ContractJpaRespository contractJpaRespository;
 
     @GetMapping("/d/v1/contracts")
-    public List<Contract> dContractAllV1() {
+    public Result dContractAllV1() {
         List<Contract> all = contractJpaRespository.findAll();
         for (Contract contract : all) {
             contract.getMember().getName(); //Lazy 강제 초기화
@@ -29,37 +30,42 @@ public class ContractDeatailAPIController {
             List<ContractItem> contractOrderItems = contract.getContractItems();
             contractOrderItems.stream().forEach(o -> o.getItem().getName()); //Lazy 강제
         }
-        return all;
+        return new Result<>(all.size(),all,"select detail contracts entity v1");
     }
 
     @GetMapping("/d/v2/contracts")
-    public List<ContractDTO> dContractAllV2() {
+    public Result dContractAllV2() {
         List<Contract> all = contractJpaRespository.findAll();
-        return all.stream().map(c -> new ContractDTO(c)).collect(Collectors.toList());
+        List<ContractDTO> result = all.stream().map(c -> new ContractDTO(c)).collect(Collectors.toList());
+        return new Result(result.size(),result,"select detail contracts dto v2");
     }
 
     //페이징 불가능, 대신 한방 쿼리
     @GetMapping("/d/v3/contracts")
-    public List<ContractDTO> dContractAllV3() {
+    public Result dContractAllV3() {
         List<Contract> all = contractJpaRespository.findAllWithItem();
-        return all.stream().map(c -> new ContractDTO(c)).collect(Collectors.toList());
+        List<ContractDTO> result = all.stream().map(c -> new ContractDTO(c)).collect(Collectors.toList());
+        return new Result(result.size(),result,"select detail contracts dto v3");
     }
 
     //xxxToOne - fetch join
     //xxxToMany - default_batch_fetch_size
     @GetMapping("/d/v4/contracts")
-    public List<ContractDTO> dContractAllV4(@RequestParam(value = "offset", defaultValue = "0") int offset,
+    public Result dContractAllV4(@RequestParam(value = "offset", defaultValue = "0") int offset,
                                             @RequestParam(value = "limit", defaultValue = "10") int limit) {
         List<Contract> all = contractJpaRespository.findDetailAllWithMemberInstallation(offset, limit);
-        return all.stream().map(c -> new ContractDTO(c)).collect(Collectors.toList());
+        List<ContractDTO> result = all.stream().map(c -> new ContractDTO(c)).collect(Collectors.toList());
+        return new Result(result.size(),result,"select detail contracts dto v4");
     }
     @GetMapping("/d/v5/contracts")
-    public List<ContractDTOV5> dContractAllV5(){
-        return contractJpaRespository.findContractQueryDto();
+    public Result dContractAllV5(){
+        List<ContractDTOV5> result = contractJpaRespository.findContractQueryDto();
+        return new Result(result.size(),result,"select detail contracts dto v5");
     }
     @GetMapping("/d/v6/contracts")
-    public List<ContractDTOV5> dContractAllV6(){
-        return contractJpaRespository.findContractQueryDto_optimization();
+    public Result dContractAllV6(){
+        List<ContractDTOV5> result = contractJpaRespository.findContractQueryDto_optimization();
+        return new Result(result.size(),result,"select detail contracts dto v6");
     }
 
 
