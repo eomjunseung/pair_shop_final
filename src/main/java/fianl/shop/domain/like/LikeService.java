@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,8 +41,15 @@ public class LikeService {
             likeRepository.save(Like.createLike(item, member));
             return "1";
         }
-
-
     }
 
+    public List<Like> findAllLikes() {
+        List<Like> all = likeRepository.findAll();
+        return all;
+    }
+
+    public List<Like> findByMember(Member loginMember) {
+        return likeRepository.findByMember(loginMember);
+
+    }
 }

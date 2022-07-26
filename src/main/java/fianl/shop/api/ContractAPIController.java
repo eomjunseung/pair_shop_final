@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RestController
 @RequiredArgsConstructor
@@ -70,11 +71,14 @@ public class ContractAPIController {
         return new Result(contracts.size(), contracts, "select simple order dto v4");
 
     }
+
+
     //회원별 주문 조회
     @GetMapping(value = "/members/contracts")
     public Result orderList(@SessionAttribute(name = SessionConst.LOGIN_MEMBER) Member loginMember) {
         List<Contract> contracts = contractService.findMemberOrderList(loginMember);
-        return new Result<>(contracts.size(), contracts, "내 주문 조회");
+        List<SimpleContractDTO> all = contracts.stream().map(SimpleContractDTO::new).collect(Collectors.toList());
+        return new Result<>(all.size(), all, "내 주문 조회");
     }
 
     //주문 취소

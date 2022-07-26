@@ -30,6 +30,7 @@ public class Like {
     @JsonIgnore
     private Member member;
 
+
     //생성
     public static Like createLike(Item item, Member member){
         Like like = new Like();

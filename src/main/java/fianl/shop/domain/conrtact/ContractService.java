@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -36,6 +37,8 @@ public class ContractService {
 
         //계약 생성
         Contract contract = Contract.createContract(member, installation);
+        contract.setContractDate(LocalDateTime.now());
+
 
         //아이템 갖고옴
         for (ItemDto item : items) {

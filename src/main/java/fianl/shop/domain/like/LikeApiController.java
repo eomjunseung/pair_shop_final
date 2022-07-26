@@ -4,10 +4,10 @@ import fianl.shop.Result;
 import fianl.shop.SessionConst;
 import fianl.shop.domain.member.Member;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,12 +26,6 @@ public class LikeApiController {
             return new Result("로그인정보를 확인해 주세요.");
         }
 
-//        출력 테스트
-//        System.out.println("checkcheck");
-//        System.out.println(loginMember.getId());
-//        System.out.println(loginMember.getName());
-//        System.out.println(itemId);
-
         String s = likeService.pushLike(loginMember.getId(), itemId);
 
         if(s.equals("0")){
@@ -40,5 +34,23 @@ public class LikeApiController {
         return new Result("관심상품 등록 완료.");
     }
 
+
+    //전체 관심 상품 조회
+    @GetMapping("/item/like")
+    public Result findAllLikes(){
+        List<Like> all = likeService.findAllLikes();
+        List<LikeDto> collect = all.stream()
+                .map(like -> new LikeDto(like.getItem().getName(), like.getMember().getName())).collect(Collectors.toList());
+        return new Result(collect.size(), collect, "전체 관심 상품 조회");
+    }
+
+    //개별 관심 상품 조회
+    @GetMapping("/item/like/personal")
+    public Result findAllPersonalLike(
+            @SessionAttribute(name = SessionConst.LOGIN_MEMBER) Member loginMember){
+        List<Like> all = likeService.findByMember(loginMember);
+        return new Result(all.size(), all, "내 관심 상품 조회");
+
+    }
 
 }
