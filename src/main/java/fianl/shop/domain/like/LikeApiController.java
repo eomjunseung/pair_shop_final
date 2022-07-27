@@ -37,20 +37,28 @@ public class LikeApiController {
 
     //전체 관심 상품 조회
     @GetMapping("/item/like")
-    public Result findAllLikes(){
-        List<Like> all = likeService.findAllLikes();
-        List<LikeDto> collect = all.stream()
-                .map(like -> new LikeDto(like.getItem().getName(), like.getMember().getName())).collect(Collectors.toList());
-        return new Result(collect.size(), collect, "전체 관심 상품 조회");
+    public Result findAllLikes(
+            @SessionAttribute(name = SessionConst.LOGIN_MEMBER , required = false) Member loginMember){
+
+        if(loginMember!=null){
+            List<Like> all = likeService.findByMember(loginMember);
+            List<LikeDto> collect = all.stream()
+                    .map(like -> new LikeDto(like.getItem().getName(), like.getMember().getName())).collect(Collectors.toList());
+            return new Result(collect.size(), collect, "내 관심 상품 조회");
+        }
+        else{
+            List<Like> all = likeService.findAllLikes();
+            List<LikeDto> collect = all.stream()
+                    .map(like -> new LikeDto(like.getItem().getName(), like.getMember().getName())).collect(Collectors.toList());
+            return new Result(collect.size(), collect, "전체 관심 상품 조회");
+        }
     }
 
-    //개별 관심 상품 조회
-    @GetMapping("/item/like/personal")
-    public Result findAllPersonalLike(
-            @SessionAttribute(name = SessionConst.LOGIN_MEMBER) Member loginMember){
-        List<Like> all = likeService.findByMember(loginMember);
-        return new Result(all.size(), all, "내 관심 상품 조회");
-
-    }
+//    //개별 관심 상품 조회
+//    @GetMapping("/item/like/personal")
+//    public Result findAllPersonalLike(
+//            @SessionAttribute(name = SessionConst.LOGIN_MEMBER) Member loginMember){
+//
+//    }
 
 }

@@ -1,3 +1,4 @@
+
 spring:
   datasource:
     url: jdbc:h2:tcp://localhost/~/finalshop
@@ -13,13 +14,13 @@ spring:
         format_sql: true
         default_batch_fetch_size: 100
 
-  spring:
-    thymeleaf:
-      prefix: classpath:/templates/
-      suffix: .html
 
 
-#  jackson:
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
 #    serialization:
 #      fail-on-empty-beans: false
 # ??? ???? ??? ??? ??...
@@ -27,6 +28,10 @@ spring:
 #  Hibernate5Module hibernate5Module() {
 #  return new Hibernate5Module();
 #}
+
+
+
+
 
 logging.level:
   org.hibernate.SQL: debug
